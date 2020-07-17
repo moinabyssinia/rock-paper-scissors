@@ -18,19 +18,45 @@ img{
 }
 
 .player-img{
-    max-width: 100%;
-    height: auto;
+    width: 200px;
+    height: 200px;
+    background-size: cover;
 }
 
 .players{
-    width: 90%;
+    width: 60%;
     display: flex;
-    margin: 200px 5% 100px 5%;
+    margin: 200px 20% 5px 20%;
     justify-content: space-around;
+    border: 3px solid darksalmon;
 }
 .options{
     width: 80%;
     display: flex;
     margin: auto 10%;
     justify-content: space-around;
+}
+.names {
+    width: 80%;
+    display: flex;
+    margin: auto auto 200px auto;
+    justify-content: space-around;
+}
+.names h2{
+    margin-top: 0;
+}
+
+
+.score {
+    display: block;
+    margin: auto 0;
+}
+
+span{
+    font-size: 32px;
+}
+
+.options img:hover{
+    border: 2px solid green;
+    box-shadow: dimgrey;
 }

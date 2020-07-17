@@ -1,10 +1,13 @@
-let options = ['Rock', 'Paper', 'Scissors'];
+        let playerName = prompt("What is your name? ", "Player");
+        let screenName = document.querySelector(".player-name");
+        let options = ['Rock', 'Paper', 'Scissors'];
         let gameCount = 0;
         let winCount = 0;
-        let rockGif = document.querySelector(".rock");
 
+        /* assign names */
+        screenName.textContent = playerName;
         /* to start the game when the browser opens */
-        game();
+        // game();
         
 
 
