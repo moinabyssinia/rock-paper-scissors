@@ -22,13 +22,24 @@ img{
     height: 200px;
     background-size: cover;
 }
-
-.players{
-    width: 60%;
+/* play button */
+.play{
     display: flex;
-    margin: 200px 20% 5px 20%;
-    justify-content: space-around;
-    border: 3px solid darksalmon;
+    justify-content: center;
+    margin: 100px auto 0px auto;
+ }
+ button{
+    font-size: 42px;
+    font-family: consolas;
+ }
+ button:hover{
+     background-color: lightcoral;
+ }
+.players{
+    width: 50%;
+    display: flex;
+    margin: 50px 25% 150px 25%;
+    justify-content: space-between;
 }
 .options{
     width: 80%;
@@ -36,13 +47,11 @@ img{
     margin: auto 10%;
     justify-content: space-around;
 }
-.names {
-    width: 80%;
-    display: flex;
-    margin: auto auto 200px auto;
-    justify-content: space-around;
+.avatars {
+    display: column;
+    text-align: center;
 }
-.names h2{
+.avatars h2{
     margin-top: 0;
 }
 
