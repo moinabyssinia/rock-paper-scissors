@@ -4,60 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
+    <link type="text/css" rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script>
-        let options = ['Rock', 'Paper', 'Scissors'];
-        let gameCount = 0;
 
-        //function to generate items
-        function computerPlay(){
-            return options[Math.floor(Math.random()*options.length)];
-        }
+    <nav>
+        <h1>Rock-Paper-Scissors</h1>
+    </nav>
 
-        //function to validate winners/losers
-        function playRound(playerSelection, computerSelection){
 
-            console.log(playerSelection, computerSelection);
+    <div class="players">
+        <img class="player-img" src="https://miro.medium.com/max/2205/1*PJXlQIts3GgzBZYty8ljbQ.jpeg" alt="">
+        <div class="score">
+            <span>0</span>
+            <span>-</span>
+            <span>0</span>
+        </div>
 
-            if (playerSelection.toLowerCase() === 'rock'){
-                if (computerSelection.toLowerCase() === 'paper'){
-                    return "You Lose! Paper beats Rock"
-                }else if (computerSelection.toLowerCase() === 'scissors'){
-                    return "You win! Rock beats Scissors"
-                }else{
-                    return "It's a tie!"
-                }
-            }
+    </div>
 
-            if (playerSelection.toLowerCase() === 'paper'){
-                if (computerSelection.toLowerCase() === 'rock'){
-                    return "You Win! Paper beats Rock"
-                }else if (computerSelection.toLowerCase() === 'scissors'){
-                    return "You Lose! Scissors beats Paper"
-                }else{
-                    return "It's a tie!"
-                }
-            }
 
-            if (playerSelection.toLowerCase() === 'scissors'){
-                if (computerSelection.toLowerCase() === 'rock'){
-                    return "You Lose! Rock beats Scissors"
-                }else if (computerSelection.toLowerCase() === 'paper'){
-                    return "You Win! Scissors beats Paper"
-                }else{
-                    return "It's a tie!"
-                }
-            }
-        }
+    <div class="options">
+        <img src="https://tottails.com/wp-content/uploads/2018/12/ROCK-1024x1024.jpg" 
+        alt="you Rock - TotTails">
 
-        //game function
-        function game(){
-            while(gameCount < 5){
-                console.log(playRound(prompt("what would you like to play? "), computerPlay()));
-                gameCount++;
-            } 
-        }
-    </script>
+        <img src="https://previews.123rf.com/images/me67kz/me67kz1801/me67kz180100072/94193123-parchment-or-an-old-manuscript-scroll-on-a-black-background-.jpg" alt="parchment">
+
+        <img src="https://i.pinimg.com/originals/10/f3/c7/10f3c79b4bd85790bcfcb322b8760a47.jpg" alt="Black businessman">    
+    </div>
+
+
+    <script type="text/javascript" src="scripts.js"></script>
 </body>
 </html>

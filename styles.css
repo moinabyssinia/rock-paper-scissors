@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+}
+nav{
+    background-color: darkslategrey;
+    color: white;
+}
+h1{
+    padding: 30px 0;
+    margin: 0;
+    text-align: center;
+    font-size: 64px;
+}
+
+img{
+    width: 200px;
+    height: 200px;
+}
+
+.player-img{
+    max-width: 100%;
+    height: auto;
+}
+
+.players{
+    width: 90%;
+    display: flex;
+    margin: 200px 5% 100px 5%;
+    justify-content: space-around;
+}
+.options{
+    width: 80%;
+    display: flex;
+    margin: auto 10%;
+    justify-content: space-around;
+}
