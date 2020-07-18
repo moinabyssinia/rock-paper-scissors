@@ -1,5 +1,5 @@
         let screenName = document.querySelector(".player-name");
-        let options = ['Rock', 'Paper', 'Scissors'];
+        let options = ['rock', 'paper', 'scissors'];
         let gameCount = 0;
         let winCount = 0;
         let playerSelection;
@@ -19,20 +19,6 @@
             game();
         })
 
-        //define player selection
-        rockButton.addEventListener('click', function(){
-            playerSelection = 'rock';
-        })
-
-        paperButton.addEventListener('click', function(){
-            playerSelection = 'paper';
-        })
-
-        scissorsButton.addEventListener('click', function(){
-            playerSelection = 'scissors';
-        })
-
-
         //define computer selection
         function computerPlay(){
             return options[Math.floor(Math.random()*options.length)];
@@ -43,11 +29,11 @@
 
             console.log(playerSelection, computerSelection);
 
-            if (playerSelection.toLowerCase() === 'rock'){
-                if (computerSelection.toLowerCase() === 'paper'){
+            if (playerSelection === 'rock'){
+                if (computerSelection === 'paper'){
                     computerScore++;
                     return "You Lose! Paper beats Rock"
-                }else if (computerSelection.toLowerCase() === 'scissors'){
+                }else if (computerSelection === 'scissors'){
                     winCount++;
                     playerScore++;
                     return "You win! Rock beats Scissors"
@@ -56,12 +42,12 @@
                 }
             }
 
-            if (playerSelection.toLowerCase() === 'paper'){
-                if (computerSelection.toLowerCase() === 'rock'){
+            if (playerSelection === 'paper'){
+                if (computerSelection === 'rock'){
                     winCount++;
                     playerScore++;
                     return "You Win! Paper beats Rock"
-                }else if (computerSelection.toLowerCase() === 'scissors'){
+                }else if (computerSelection === 'scissors'){
                     computerScore++;
                     return "You Lose! Scissors beats Paper"
                 }else{
@@ -69,11 +55,11 @@
                 }
             }
 
-            if (playerSelection.toLowerCase() === 'scissors'){
-                if (computerSelection.toLowerCase() === 'rock'){
+            if (playerSelection === 'scissors'){
+                if (computerSelection === 'rock'){
                     computerScore++;
                     return "You Lose! Rock beats Scissors"
-                }else if (computerSelection.toLowerCase() === 'paper'){
+                }else if (computerSelection === 'paper'){
                     winCount++;
                     playerScore++;
                     return "You Win! Scissors beats Paper"
@@ -85,14 +71,39 @@
 
         //game function
         function game(){
-            while(gameCount < 5){
-                console.log(playRound(playerSelection, computerPlay()));
-                gameCount++;
-            } 
-            console.log(`You won ${winCount} games out of five!`);
-            if (winCount >2){
-                console.log("You are the victor!");
-            }else{
-                console.log("You lost :( try again");
+
+            //define player selection
+            rockButton.addEventListener('click', function(){
+                playerSelection = 'rock';
+                computerSelection = computerPlay();
+                playRound(playerSelection, computerSelection);
+                console.log(gameCount++);
+            })
+
+            paperButton.addEventListener('click', function(){
+                playerSelection = 'paper';
+                computerSelection = computerPlay();
+                playRound(playerSelection, computerSelection);
+                console.log(gameCount++);
+            })
+
+            scissorsButton.addEventListener('click', function(){
+                playerSelection = 'scissors';
+                computerSelection = computerPlay();
+                playRound(playerSelection, computerSelection);
+                console.log(gameCount++);
+            })
+
+            if (gameCount === 5){
+                console.log(`You won ${winCount} games out of five!`);
+                if (winCount >2){
+                    console.log("You are the victor!");
+                    return;
+                }else{
+                    console.log("You lost :( try again");
+                    return;
+                }
+                
             }
+
         }
