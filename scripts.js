@@ -87,14 +87,14 @@
             console.log(gameCount++);
         })
 
-            paperButton.addEventListener('click', function(){
+        paperButton.addEventListener('click', function(){
             playerSelection = 'paper';
             computerSelection = computerPlay();
             playRound(playerSelection, computerSelection);
             console.log(gameCount++);
         })
 
-            scissorsButton.addEventListener('click', function(){
+        scissorsButton.addEventListener('click', function(){
             playerSelection = 'scissors';
             computerSelection = computerPlay();
             playRound(playerSelection, computerSelection);
