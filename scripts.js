@@ -79,11 +79,12 @@
         }
 
         /* display end game message */
+        // last message conflicts with message from the playRound function - debug
         function displayScore(){
             if (winCount >2){
                 gamesLeft.textContent = `Games Left = ${5-gameCount}`;
                 message.textContent = "Congratulations, You Won!!!";
-            }else if (winCount == 2){
+            }else if (winCount === 2){
                 gamesLeft.textContent = `Games Left = ${5-gameCount}`;
                 message.textContent = "Wow, Close game - It's a tie!";
             } else{
