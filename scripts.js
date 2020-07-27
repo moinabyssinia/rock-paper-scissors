@@ -10,6 +10,7 @@
         let playerScore = document.querySelector(".player-score");
         let computerScore = document.querySelector(".computer-score");
         let message = document.querySelector(".message");
+        let gamesLeft = document.querySelector(".games-left");
 
 
 
@@ -26,54 +27,67 @@
 
         //function to validate winners/losers
         function playRound(playerSelection, computerSelection){
-            console.log(computerSelection, playerSelection);
+            console.log(computerSelection, playerSelection, gameCount);
 
-            while (gameCount < 6){
-                if (playerSelection === 'rock'){
-                    if (computerSelection === 'paper'){
-                        computerScore.textContent = Number(computerScore.textContent) + 1;
-                        return "You Lose! Paper beats Rock"
-                    }else if (computerSelection === 'scissors'){
-                        winCount++;
-                        playerScore.textContent = Number(playerScore.textContent) + 1;
-                        return "You win! Rock beats Scissors"
-                    }else{
-                        return "It's a tie!"
-                    }
-                }
-    
-                if (playerSelection === 'paper'){
-                    if (computerSelection === 'rock'){
-                        winCount++;
-                        playerScore.textContent = Number(playerScore.textContent) + 1;
-                        return "You Win! Paper beats Rock"
-                    }else if (computerSelection === 'scissors'){
-                        computerScore.textContent = Number(computerScore.textContent) + 1;
-                        return "You Lose! Scissors beats Paper"
-                    }else{
-                        return "It's a tie!"
-                    }
-                }
-    
-                if (playerSelection === 'scissors'){
-                    if (computerSelection === 'rock'){
-                        computerScore.textContent = Number(computerScore.textContent) + 1;
-                        return "You Lose! Rock beats Scissors"
-                    }else if (computerSelection === 'paper'){
-                        winCount++;
-                        playerScore.textContent = Number(playerScore.textContent) + 1;
-                        return "You Win! Scissors beats Paper"
-                    }else{
-                        return "It's a tie!"
-                    }
+            if (playerSelection === 'rock'){
+                if (computerSelection === 'paper'){
+                    computerScore.textContent = Number(computerScore.textContent) + 1;
+                    gamesLeft.textContent = `Games Left = ${5-gameCount}`;
+                    message.textContent = "Bummer! Paper beats Rock";
+                }else if (computerSelection === 'scissors'){
+                    winCount++;
+                    playerScore.textContent = Number(playerScore.textContent) + 1;
+                    gamesLeft.textContent = `Games Left = ${5-gameCount}`;
+                    message.textContent = "Yaay! Rock beats Scissors";
+                }else if (computerSelection === 'rock'){
+                    gamesLeft.textContent = `Games Left = ${5-gameCount}`;
+                    message.textContent = "It's a tie!";
                 }
             }
-            /* display end game message */
+
+            if (playerSelection === 'paper'){
+                if (computerSelection === 'rock'){
+                    winCount++;
+                    gamesLeft.textContent = `Games Left = ${5-gameCount}`;
+                    playerScore.textContent = Number(playerScore.textContent) + 1;
+                    message.textContent = "Yaay! Paper beats Rock";
+                }else if (computerSelection === 'scissors'){
+                    computerScore.textContent = Number(computerScore.textContent) + 1;
+                    gamesLeft.textContent = `Games Left = ${5-gameCount}`;
+                    message.textContent = "Bummer! Scissors beat Paper";
+                }else{
+                    gamesLeft.textContent = `Games Left = ${5-gameCount}`;
+                    message.textContent = "It's a tie!";
+                }
+            }
+
+            if (playerSelection === 'scissors'){
+                if (computerSelection === 'rock'){
+                    computerScore.textContent = Number(computerScore.textContent) + 1;
+                    gamesLeft.textContent = `Games Left = ${5-gameCount}`;
+                    message.textContent = "Bummer! Rock beats Scissors";
+                }else if (computerSelection === 'paper'){
+                    winCount++;
+                    playerScore.textContent = Number(playerScore.textContent) + 1;
+                    gamesLeft.textContent = `Games Left = ${5-gameCount}`;
+                    message.textContent = "Yaay! Scissors beat Paper";
+                }else{
+                    gamesLeft.textContent = `Games Left = ${5-gameCount}`;
+                    message.textContent = "It's a tie!";
+                }
+            }
+        }
+
+        /* display end game message */
+        function displayScore(){
             if (winCount >2){
+                gamesLeft.textContent = `Games Left = ${5-gameCount}`;
                 message.textContent = "Congratulations, You Won!!!";
             }else if (winCount == 2){
+                gamesLeft.textContent = `Games Left = ${5-gameCount}`;
                 message.textContent = "Wow, Close game - It's a tie!";
             } else{
+                gamesLeft.textContent = `Games Left = ${5-gameCount}`;
                 message.textContent = "Sorry, You lost!";
             }
         }
@@ -82,31 +96,36 @@
         //define player selection
         rockButton.addEventListener('click', function(){
             playerSelection = 'rock';
+            gameCount++;
             computerSelection = computerPlay();
-            playRound(playerSelection, computerSelection);
-            console.log(gameCount++);
+            if (gameCount < 5){
+                playRound(playerSelection, computerSelection);    
+            }else if (gameCount === 5){
+                displayScore();
+            }
         })
 
         paperButton.addEventListener('click', function(){
             playerSelection = 'paper';
+            gameCount++;
             computerSelection = computerPlay();
-            playRound(playerSelection, computerSelection);
-            console.log(gameCount++);
+            if (gameCount <= 5){
+                playRound(playerSelection, computerSelection);    
+            }else if (gameCount === 5){
+                displayScore();
+            }
         })
 
         scissorsButton.addEventListener('click', function(){
             playerSelection = 'scissors';
+            gameCount++;
             computerSelection = computerPlay();
-            playRound(playerSelection, computerSelection);
-            console.log(gameCount++);
+            if (gameCount <= 5){
+                playRound(playerSelection, computerSelection);    
+            }else if (gameCount === 5){
+                displayScore();
+            }
         })
 
-/*         //game function
-        function game(){
 
-            if (gameCount === 5){
-                console.log(`You won ${winCount} games out of five!`);
 
-                
-            }
-        } */
