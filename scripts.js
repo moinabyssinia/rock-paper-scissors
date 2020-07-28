@@ -11,10 +11,17 @@
         let computerScore = document.querySelector(".computer-score");
         let message = document.querySelector(".message");
         let gamesLeft = document.querySelector(".games-left");
+        let gameButton = document.querySelector('button');
 
 
-
+        /* begin/restart game */
         playButton.addEventListener('click', function(){
+            gamesLeft.textContent = '';
+            message.textContent = '';
+            playerScore.textContent = 0;
+            computerScore.textContent = 0;
+            gameCount = 0;
+            winCount = 0;
             let playerName = prompt("What is your name? ", "Player");
             /* assign names */
             screenName.textContent = playerName;
@@ -81,15 +88,21 @@
         /* display end game message */
         // last message conflicts with message from the playRound function - debug
         function displayScore(){
-            if (winCount >2){
+            if (Number(playerScore.textContent) > Number(computerScore.textContent)){
+                console.log('you won!');
                 gamesLeft.textContent = `Games Left = ${5-gameCount}`;
                 message.textContent = "Congratulations, You Won!!!";
-            }else if (winCount === 2){
+                restartGame();
+            }else if (Number(playerScore.textContent) === Number(computerScore.textContent)){
+                console.log('you tie!');
                 gamesLeft.textContent = `Games Left = ${5-gameCount}`;
                 message.textContent = "Wow, Close game - It's a tie!";
+                restartGame();
             } else{
+                console.log('you lost!');
                 gamesLeft.textContent = `Games Left = ${5-gameCount}`;
                 message.textContent = "Sorry, You lost!";
+                restartGame();
             }
         }
 
@@ -102,6 +115,7 @@
             if (gameCount < 5){
                 playRound(playerSelection, computerSelection);    
             }else if (gameCount === 5){
+                playRound(playerSelection, computerSelection);
                 displayScore();
             }
         })
@@ -110,9 +124,10 @@
             playerSelection = 'paper';
             gameCount++;
             computerSelection = computerPlay();
-            if (gameCount <= 5){
+            if (gameCount < 5){
                 playRound(playerSelection, computerSelection);    
             }else if (gameCount === 5){
+                playRound(playerSelection, computerSelection);
                 displayScore();
             }
         })
@@ -121,12 +136,17 @@
             playerSelection = 'scissors';
             gameCount++;
             computerSelection = computerPlay();
-            if (gameCount <= 5){
+            if (gameCount < 5){
                 playRound(playerSelection, computerSelection);    
             }else if (gameCount === 5){
+                playRound(playerSelection, computerSelection);
                 displayScore();
             }
         })
+
+        function restartGame(){
+            gameButton.textContent = 'Restart Game';
+        }
 
 
 
